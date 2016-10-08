@@ -13,12 +13,11 @@ public class Check {
 	
 	private int attemptsCount = 0;
 	
-	public Check(final DatabaseServerDTO databaseServerDTO,
-				 final CheckerDTO checkerDTO) {
-		if(databaseServerDTO == null){
+	public Check(final DatabaseServerDTO databaseServerDTO, final CheckerDTO checkerDTO) {
+		if (databaseServerDTO == null) {
 			throw new IllegalArgumentException();
 		}
-		if(checkerDTO == null){
+		if (checkerDTO == null) {
 			throw new IllegalArgumentException();
 		}
 		_databaseServerDTO = databaseServerDTO;
@@ -30,12 +29,13 @@ public class Check {
 
 		boolean isUp = isUp();
 
-		if ( isUp ) {
+		if (isUp) {
 			System.out.println("-------- Oracle is up and running ------");
 		} else {
-			System.out.println("-------- Can't connect to oracle after " +
-				_checkerDTO.maxAttempts + " attempts ------");
-				System.exit(1);
+			System.out.println("-------- Can't connect to oracle after " + 
+							   _checkerDTO.maxAttempts +
+							   " attempts ------");
+			System.exit(1);
 		}
 	}
 	
@@ -78,8 +78,8 @@ public class Check {
 	private void sleep() {
 		try {
 			Thread.sleep(_checkerDTO.sleepTime * 1000);
-		} catch(InterruptedException ex) {
-    	Thread.currentThread().interrupt();
+		} catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
 		}
 	}
 	
